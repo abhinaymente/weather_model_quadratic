@@ -1,33 +1,42 @@
-# ===== ITERATIVE MODEL IMPLEMENTATION =====
-
-# Formula function
-def quadratic_weather_model(a, b, c, time):
-    return a * (time ** 2) + b * time + c
-
-# Coefficients
-a = -0.2
-b = 1.5
-c = 24
+# ===== ITERATIVE MODEL =====
+import matplotlib.pyplot as plt
+import numpy as np
 
 print("=== ITERATIVE MODEL ===")
 
-# Iteration 1: basic output (every 12 hours)
-print("Iteration 1:")
-for hour in range(0, 25, 12):
-    temp = quadratic_weather_model(a, b, c, hour)
-    print(f"Time: {hour} hrs -> Temp: {temp:.2f}°C")
-print("---")
+# Quadratic model function
+def quadratic_weather_model(hour):
+    a, b, c = -0.02, 0.5, 15
+    return a * (hour ** 2) + b * hour + c
 
-# Iteration 2: same outputs, improved formatting
-print("Iteration 2:")
-for hour in range(0, 25, 12):
-    temp = quadratic_weather_model(a, b, c, hour)
-    print(f"[Better Output] Time={hour} hrs | Temp={temp:.2f}°C")
-print("---")
+# Iterations
+iterations = 3
+hours = np.arange(0, 25, 12)  # checking every 12 hours
+all_temps = []
 
-# Iteration 3: more frequent checks
-print("Iteration 3:")
-for hour in range(0, 25, 6):
-    temp = quadratic_weather_model(a, b, c, hour)
-    print(f"Time: {hour} hrs -> Temp: {temp:.2f}°C")
-print("---")
+for iteration in range(1, iterations + 1):
+    print(f"Iteration {iteration}:")
+    temps = []
+    for hour in hours:
+        temp = quadratic_weather_model(hour)
+        temps.append(temp)
+        print(f"Time: {hour} hrs -> Temp: {temp:.2f}°C")
+    print("---")
+    all_temps.append(temps)
+
+# Plot the graph
+plt.figure(figsize=(8,5))
+
+for i, temps in enumerate(all_temps, start=1):
+    plt.plot(hours, temps, marker='o', linestyle='-', label=f"Iteration {i}")
+
+plt.title("Iterative Model - Weather Prediction")
+plt.xlabel("Time (hours)")
+plt.ylabel("Temperature (°C)")
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.legend()
+
+# Save graph as PNG
+plt.savefig("iterative_graph.png")
+
+print("\nGraph saved as 'iterative_graph.png' in your repository.")
