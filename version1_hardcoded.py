@@ -6,21 +6,15 @@ a = 0.5
 b = -2.0
 c = 28.0
 
-# Quadratic function
-def quadratic_weather_model(t):
-    return a * t**2 + b * t + c
-
 # Range of time values (0 to 10)
 times = np.arange(0, 11, 1)
-temps = [quadratic_weather_model(t) for t in times]
+temps = a * times**2 + b * times + c
 
 # Specific calculation for t = 5
 t = 5
-temperature = quadratic_weather_model(t)
+temperature = a * t**2 + b * t + c
 
-print("Weather Prediction Model - Version 1: Hardcoded Coefficients")
-print(f"Time (t) = {t}")
-print(f"Predicted temperature: {temperature:.2f}°C")
+print(f"Predicted temperature at time t:{t}: {temperature:.2f}°C")
 
 # Plot graph
 plt.figure(figsize=(8,5))
@@ -37,4 +31,5 @@ plt.legend()
 plt.savefig("weather_prediction.png")
 plt.close()
 
-print("\nGraph saved as 'weather_prediction_v1.png'")
+print("\nGraph saved as 'weather_prediction.png'")
+
