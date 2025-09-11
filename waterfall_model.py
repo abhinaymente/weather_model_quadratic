@@ -23,7 +23,7 @@ for i, hour in enumerate(hours):
 # Plot the graph
 plt.figure(figsize=(8,5))
 plt.plot(hours, temps, marker='o', linestyle='-', color='b', label="Predicted Temp")
-plt.title("Version 4: Waterfall Model - Weather Prediction")
+plt.title("Version 1: Waterfall Model - Weather Prediction")
 plt.xlabel("Time (hours)")
 plt.ylabel("Temperature (°C)")
 plt.grid(True, linestyle="--", alpha=0.6)
