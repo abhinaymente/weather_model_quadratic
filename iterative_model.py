@@ -37,7 +37,7 @@ for hour in check_hours:
     temp = quadratic_weather_model(hour)
     plt.scatter(hour, temp, color='r', s=70, zorder=5)
 
-plt.title("Version 3: Iterative Model (U-shape)")
+plt.title("Version 2: Iterative Model (U-shape)")
 plt.xlabel("Time (hours)")
 plt.ylabel("Temperature (°C)")
 plt.grid(True, linestyle="--", alpha=0.6)
