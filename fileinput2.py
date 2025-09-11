@@ -9,13 +9,9 @@ with open("input2.txt", "r") as f:
         T = a * t**2 + b * t + c
         print(f"a={a}, b={b}, c={c}, t={t} -> T={T:.2f}°C")
 
-        # Function for curve
-        def quadratic_weather_model(x):
-            return a * x**2 + b * x + c
-
         # Curve across 0–24 hours
         times = np.arange(0, 25, 1)
-        temps = [quadratic_weather_model(x) for x in times]
+        temps = a * times**2 + b * times + c
 
         # Plot curve
         plt.plot(times, temps, label=f"a={a}, b={b}, c={c}")
@@ -34,4 +30,5 @@ plt.savefig("file_input_multiple_weather.png")
 plt.close()
 
 print("\nGraph saved as 'file_input_multiple_weather.png' in your repository.")
+
 

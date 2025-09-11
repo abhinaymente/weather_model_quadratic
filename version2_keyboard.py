@@ -11,13 +11,9 @@ t = float(input("Enter t value: "))
 temp = a * t**2 + b * t + c
 print(f"Temperature at t={t}: {temp:.2f}°C")
 
-# Function
-def quadratic_weather_model(x):
-    return a * x**2 + b * x + c
-
 # Range of time values (0–10 for clean graph)
 times = np.arange(0, 11, 1)
-temps = [quadratic_weather_model(x) for x in times]
+temps = a * times**2 + b * times + c
 
 # Plot graph
 plt.figure(figsize=(8,5))
